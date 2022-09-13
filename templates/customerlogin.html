@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %} Login {% endblock %}
+{% block content %}
+<style>
+   .errorlist{
+       color: red;
+   }
+ #id_username{
+   width: 100%;
+   border-radius: 20px;
+   padding: 10px;
+   background-color: mistyrose;
+   outline: none;
+   text-align: center;
+   color: yellowgreen;
+   border: none;
+}
+ .bt{
+     padding: 10px;
+     border-radius: 12px;
+     background-color: green;
+     color: white;
+     outline: none;
+     border: none;
+   }
+#id_password{
+   width: 100%;
+   border-radius: 20px;
+   padding: 10px;
+   background-color: mistyrose;
+   outline: none;
+   text-align: center;
+   color: yellowgreen;
+   border: none;
+}
+</style>
+<div class="container">
+<div class="row mt-5">
+  <div class="col-md-6 offset-md-3">
+     {% comment %} <div class="border  p-3" style="color: black;"> {% endcomment %}
+        <h3 style="color: green;">Customer Login Form</h3>
+        <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="bt">Login</button>
+         {% if error %}
+         <li style="color: red;">{{error}}</li>
+         {% endif %}
+      </form>
+      <div class="row">
+        <div class="col-md-6">
+        <p>Forgot Password?<a href="{% url 'ecommapp:passwordforgot' %}">Reset now.</a><p>
+        </div>
+         <div class="col-md-6">
+               <p> or dont have account? <a href="{% url 'ecommapp:customerregistration' %}{% if request.GET.next %}?next={{request.GET.next}}{{% endif %}">Register</a></p>
+        </div>
+
+      </div>
+     
+
+
+   </div>
+ </div>
+{% comment %} </div> {% endcomment %}
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %} Admin Login {% endblock %}
+{% block content %}
+<style>
+   .errorlist{
+       color: red;
+   }
+   #id_username{
+   width: 100%;
+   border-radius: 20px;
+   padding: 15px;
+   background-color: mistyrose;
+   outline: none;
+   text-align: center;
+   color: yellowgreen;
+   border: none;
+}
+p{
+  color: brown;
+}
+ .bt{
+     padding: 10px;
+     border-radius: 12px;
+     background-color: green;
+     color: white;
+     outline: none;
+     border: none;
+   }
+#id_password{
+   width: 100%;
+   border-radius: 20px;
+   padding: 15px;
+   background-color: mistyrose;
+   outline: none;
+   text-align: center;
+   color: yellowgreen;
+   border: none;
+}
+</style>
+ <div class="container">
+   <div class="row">
+      <div class="col-md-6 mx-auto">
+        <h3  style="color: green;">Admin Login Form</h3>
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="bt">Login as a Admin</button>
+         {% if error %}
+         <li style="color: red;">{{error}}</li>
+         {% endif %}
+      </form>
+   </div>
+ </div>
+{% endblock %}

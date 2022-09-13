@@ -1,0 +1,77 @@
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https:https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.w3-container {
+    font-size: 14px;
+    background-color: blue;
+    color: white;
+    padding: 20px;
+}
+.center{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+</style>
+</head>
+<body>
+    <div class="center">
+        
+            <div class="w3-card-4">
+                <header class="w3-container">
+                    <h1>DONATE</h1>
+                </header>
+                <div class="cente">
+                    <p>Donate for a great cause. Be a hero.</p>
+                    <div id="paypal-button-container"></div>
+
+                    <!-- Include the PayPal JavaScript SDK -->
+                    <script src="https://www.paypal.com/sdk/js?client-id=AZIOjiIG3BYhLJH_lam_sQ2SfcY6Lc5jDesPol6RKkT6Cahun33mcgYscrU9zefXfDyleKzer-9ZF8Wf&currency=USD"></script>
+                
+                    <script>
+                        // Render the PayPal button into #paypal-button-container
+                        paypal.Buttons({
+                
+                            // Set up the transaction
+                            createOrder: function(data, actions) {
+                                return actions.order.create({
+                                    purchase_units: [{
+                                        amount: {
+                                            value: '50'
+                                        }
+                                    }]
+                                });
+                            },
+                
+                            // Finalize the transaction
+                            onApprove: function(data, actions) {
+                                return actions.order.capture().then(function(orderData) {
+                                    // Successful capture! For demo purposes:
+                                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                
+                                    // Replace the above to show a success message within this page, e.g.
+                                    // const element = document.getElementById('paypal-button-container');
+                                    // element.innerHTML = '';
+                                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                                    // Or go to another URL:  actions.redirect('thank_you.html');
+                                });
+                            }
+                
+                
+                        }).render('#paypal-button-container');
+                 
+                    </script>
+                </div>
+                <footer class="w3-container">
+                    <h5>&copy Professional Cipher</h5>
+                </footer>
+            </div>
+      
+    </div>
+
+</body>

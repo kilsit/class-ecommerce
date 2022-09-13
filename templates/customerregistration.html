@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Registration{% endblock %}
+{% block content %}
+<style>
+  .main{
+   
+    margin: 0;
+  }
+   .errorlist{
+    color: red;
+    
+   }
+   p{
+     color: brown;
+     text-align: center;
+     font-size: bold;
+   }
+   #id_username{
+    width: 100%;
+     border-radius: 20px;
+     padding: 10px;
+     background-color: mistyrose;
+     outline: none;
+     text-align: center;
+     color: yellowgreen;
+     border: none;
+   }
+   .bt{
+     padding: 10px;
+     border-radius: 12px;
+     background-color: green;
+     color: white;
+     outline: none;
+     border: none;
+   }
+   #id_username:hover{
+    background-color: mistyrose;
+
+
+   }
+  #id_password{
+    width: 100%;
+     border-radius: 20px;
+     padding: 10px;
+     background-color: mistyrose;
+     outline: none;
+     text-align: center;
+     color: yellowgreen;
+     border: none;
+   }
+  #id_email{
+    width: 100%;
+     border-radius: 20px;
+     padding: 10px;
+     background-color: mistyrose;
+     outline: none;
+     text-align: center;
+     color: yellowgreen;
+     border: none;
+   }
+  #id_full_name{
+    width: 100%;
+     border-radius: 20px;
+     padding: 10px;
+     background-color: mistyrose;
+     outline: none;
+     text-align: center;
+     color: yellowgreen;
+     border: none;
+
+
+   }
+
+   #id_address{
+     width: 100%;
+     border-radius: 20px;
+     padding: 10px;
+     background-color: mistyrose;
+     outline: none;
+     text-align: center;
+     color: yellowgreen;
+     border: none;
+   }
+</style>
+ <div class="container-fd main">
+   <div class="row">
+      <div class="col-md-6 mx-auto">
+        <h3 style="color: green;">Customer Registration Form</h3>
+        <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}  
+        <p>already have an account? <a href="{% url 'ecommapp:customerlogin' %}">Login</a></p>
+      <button class="bt">Register</button>
+    </form>
+   </div>
+   <br/>
+ </div>
+ <br/>
+ <br/>
+{% endblock %}
